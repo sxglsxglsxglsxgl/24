@@ -1,20 +1,22 @@
-function toggleMenu(){
-  const d = document.getElementById('drawer');
-  const isOpen = d.classList.toggle('open');
-  d.setAttribute('aria-hidden', String(!isOpen));
-}
-
-// Attach flip to ALL tickets
-document.querySelectorAll('.ticket.flip').forEach(card=>{
-  card.addEventListener('click', ()=>card.classList.toggle('flipped'));
-  card.addEventListener('keydown', (e)=>{
-    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('flipped'); }
+// Independent flip for every tile
+document.querySelectorAll('.tile.flip').forEach(tile=>{
+  const toggle = ()=> tile.classList.toggle('open');
+  tile.addEventListener('click', (e)=>{
+    // Avoid toggling when clicking inside a button on back
+    if(e.target.closest('button')) return;
+    toggle();
+  });
+  tile.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter' || e.key===' '){
+      e.preventDefault();
+      toggle();
+    }
   });
 });
 
-// Simple placeholder QR
+// Simple placeholder QR (replace with real generator later)
 function drawFakeQR(el, seed){
-  const size = 21, cell = 4;
+  const size = 21, cell = 3.2;
   const canvas = document.createElement('canvas');
   canvas.width = size*cell; canvas.height = size*cell;
   const ctx = canvas.getContext('2d');
@@ -32,19 +34,16 @@ function drawFakeQR(el, seed){
     for(let x=0;x<size;x++){
       const near=(x<8&&y<8)||(x>size-9&&y<8)||(x<8&&y>size-9);
       if(near) continue;
-      if(rnd()>0.62) ctx.fillRect(x*cell,y*cell,cell,cell);
+      if(rnd()>0.64) ctx.fillRect(x*cell,y*cell,cell,cell);
     }
   }
   el.innerHTML=''; el.appendChild(canvas);
 }
-
-// Render QRs + bind refresh buttons
-document.querySelectorAll('.qr').forEach((el,i)=> drawFakeQR(el, el.dataset.seed || ('seed'+i)));
-document.querySelectorAll('.btn.refresh').forEach((btn,idx)=>{
+document.querySelectorAll('.qr').forEach(el=> drawFakeQR(el, el.dataset.seed||'seed'));
+document.querySelectorAll('.btn.refresh').forEach(btn=>{
   btn.addEventListener('click', (e)=>{
     e.stopPropagation();
-    const card = btn.closest('.flip');
-    const qr = card.querySelector('.qr');
+    const qr = btn.closest('.tile').querySelector('.qr');
     drawFakeQR(qr, 'seed'+Date.now());
   });
 });
