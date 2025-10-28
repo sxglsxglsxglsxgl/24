@@ -11,7 +11,7 @@
   <div class="desktop-only">
     <div class="desktop-wrap">
       <h1>CLASSNOE MESTO</h1>
-      <p>Десктоп-версия (ваш основной сайт). Откройте на мобильном, чтобы увидеть «карту-билет».</p>
+      <p>Откройте на мобильном, чтобы увидеть «карту-билет».</p>
     </div>
   </div>
 
@@ -32,41 +32,55 @@
     </nav>
 
     <main class="stack">
-      <!-- Ticket 1 (reference-like layout) -->
-      <section class="ticket tkt1">
-        <div class="row row-top">
-          <div class="tile magenta notch-left">
-            <div class="tile-text strong">WINTER<br>CIRCUS</div>
-          </div>
-          <div class="tile cream small notch-right">
-            <div class="tile-text">RESIDENT CITIZEN<br>MEMBER PASS</div>
-          </div>
-        </div>
 
-        <div class="row row-mid">
-          <div class="tile magenta full notch-left">
-            <div class="tile-text strong">WONDER<br>&amp;CO</div>
+      <!-- Ticket template 1 -->
+      <section class="ticket flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face front">
+            <div class="row row-top grid-2-1">
+              <div class="tile magenta notch-left">
+                <div class="tile-text strong">WINTER<br>CIRCUS</div>
+              </div>
+              <div class="tile cream small notch-right">
+                <div class="tile-text">RESIDENT CITIZEN<br>MEMBER PASS</div>
+              </div>
+            </div>
+            <div class="row row-mid">
+              <div class="tile magenta full notch-left">
+                <div class="tile-text strong">WONDER<br>&amp;CO</div>
+              </div>
+            </div>
+            <div class="row row-bottom">
+              <div class="meta">
+                <div><span>MEMBER SINCE</span><strong>13.01.2024</strong></div>
+                <div><span>EXPIRATION DATE</span><strong>13.01.2025</strong></div>
+              </div>
+              <div class="codes">
+                <div class="barcode"></div>
+                <div class="qr" data-seed="seed1"></div>
+              </div>
+              <div class="number">NO. 20340950</div>
+            </div>
           </div>
-        </div>
-
-        <div class="row row-bottom">
-          <div class="meta">
-            <div><span>MEMBER SINCE</span><strong>13.01.2024</strong></div>
-            <div><span>EXPIRATION DATE</span><strong>13.01.2025</strong></div>
+          <div class="flip-face back">
+            <div class="details">
+              <h2>Информация</h2>
+              <ul>
+                <li>Статус: <b>ACTIVE</b></li>
+                <li>Зона: <b>GENERAL</b></li>
+                <li>Правила: персональная, не передавать</li>
+              </ul>
+              <button class="btn refresh">Обновить QR</button>
+            </div>
           </div>
-          <div class="codes">
-            <div class="barcode"></div>
-            <div class="qr" id="qr1"></div>
-          </div>
-          <div class="number">NO. 20340950</div>
         </div>
       </section>
 
-      <!-- Ticket 2 (flip) -->
-      <section class="ticket flip" id="flipCard" tabindex="0">
+      <!-- Ticket template 2 -->
+      <section class="ticket flip" tabindex="0">
         <div class="flip-inner">
           <div class="flip-face front">
-            <div class="row row-top">
+            <div class="row row-top grid-2-1">
               <div class="tile magenta notch-left">
                 <div class="tile-text strong">CLASSNOE<br>MESTO</div>
               </div>
@@ -86,32 +100,64 @@
               </div>
               <div class="codes">
                 <div class="barcode"></div>
-                <div class="qr" id="qr2"></div>
+                <div class="qr" data-seed="seed2"></div>
               </div>
               <div class="number">CARD CM-001234</div>
             </div>
           </div>
           <div class="flip-face back">
             <div class="details">
-              <h2>Информация</h2>
+              <h2>Детали карты</h2>
               <ul>
-                <li>Статус: <b>ACTIVE</b></li>
                 <li>Скидка: <b>10%</b> на кофе</li>
                 <li>Бонусы: <b>125</b> баллов</li>
-                <li>Правила: персональная, не передавать</li>
+                <li>Поддержка: hello@classnoe.mesto</li>
               </ul>
-              <button class="btn" onclick="refreshQR()">Обновить QR</button>
+              <button class="btn refresh">Обновить QR</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Wallet CTA -->
-      <section class="ticket tkt-cta">
-        <h3>Добавить в Wallet</h3>
-        <p>Сохраните карту в Apple Wallet / Google Wallet (демо).</p>
-        <button class="btn outline">Добавить</button>
+      <!-- Ticket template 3 -->
+      <section class="ticket flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face front">
+            <div class="row row-top grid-2-1">
+              <div class="tile magenta notch-left">
+                <div class="tile-text strong">ACCESS<br>PASS</div>
+              </div>
+              <div class="tile cream small notch-right">
+                <div class="tile-text">CLASSNOE MESTO</div>
+              </div>
+            </div>
+            <div class="row row-mid">
+              <div class="tile magenta full notch-left">
+                <div class="tile-text strong">WALLET</div>
+              </div>
+            </div>
+            <div class="row row-bottom">
+              <div class="meta">
+                <div><span>ISSUED</span><strong>01.07.2025</strong></div>
+                <div><span>VALID</span><strong>THRU 12.2025</strong></div>
+              </div>
+              <div class="codes">
+                <div class="barcode"></div>
+                <div class="qr" data-seed="seed3"></div>
+              </div>
+              <div class="number">PASS WLT-000777</div>
+            </div>
+          </div>
+          <div class="flip-face back">
+            <div class="details">
+              <h2>Добавить в Wallet</h2>
+              <p>Сохраните карту в Apple Wallet / Google Wallet (демо).</p>
+              <button class="btn outline">Добавить</button>
+            </div>
+          </div>
+        </div>
       </section>
+
     </main>
   </div>
 

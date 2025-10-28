@@ -4,10 +4,15 @@ function toggleMenu(){
   d.setAttribute('aria-hidden', String(!isOpen));
 }
 
-const flip = document.getElementById('flipCard');
-flip.addEventListener('click', ()=>flip.classList.toggle('flipped'));
+// Attach flip to ALL tickets
+document.querySelectorAll('.ticket.flip').forEach(card=>{
+  card.addEventListener('click', ()=>card.classList.toggle('flipped'));
+  card.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('flipped'); }
+  });
+});
 
-// Simple placeholder QR (noise pattern). Replace with real QR later.
+// Simple placeholder QR
 function drawFakeQR(el, seed){
   const size = 21, cell = 4;
   const canvas = document.createElement('canvas');
@@ -32,6 +37,14 @@ function drawFakeQR(el, seed){
   }
   el.innerHTML=''; el.appendChild(canvas);
 }
-drawFakeQR(document.getElementById('qr1'),'seed1');
-drawFakeQR(document.getElementById('qr2'),'seed2');
-function refreshQR(){ drawFakeQR(document.getElementById('qr2'), 'seed'+Date.now()); }
+
+// Render QRs + bind refresh buttons
+document.querySelectorAll('.qr').forEach((el,i)=> drawFakeQR(el, el.dataset.seed || ('seed'+i)));
+document.querySelectorAll('.btn.refresh').forEach((btn,idx)=>{
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const card = btn.closest('.flip');
+    const qr = card.querySelector('.qr');
+    drawFakeQR(qr, 'seed'+Date.now());
+  });
+});
