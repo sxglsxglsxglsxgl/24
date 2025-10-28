@@ -9,8 +9,8 @@ body{margin:0;background:#0f0f0f;color:#111;font-family:ui-sans-serif,system-ui,
   --cream:#f3f0e8;
   --line:#ded7c6;
   --gap:12px;
+  --appbarH:56px;
 }
-/* Desktop placeholder */
 .desktop-only{display:none}
 .mobile-only{display:block}
 @media (min-width:900px){
@@ -18,50 +18,63 @@ body{margin:0;background:#0f0f0f;color:#111;font-family:ui-sans-serif,system-ui,
   .mobile-only{display:none}
   .desktop-wrap{min-height:100vh;display:grid;place-items:center;background:#111;color:#fff}
 }
-
 /* App bar */
-.appbar{position:sticky;top:0;padding:12px 16px;background:#111;color:#eee;border-bottom:1px solid #222;z-index:10}
+.appbar{position:sticky;top:0;height:var(--appbarH);display:flex;align-items:center;padding:0 16px;background:#111;color:#eee;border-bottom:1px solid #222;z-index:10}
 .brand{font-weight:800;letter-spacing:.04em}
 
 /* One-viewport sheet */
 .sheet{
-  height:calc(100vh - 56px - env(safe-area-inset-bottom));
-  padding:12px;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: var(--gap);
-  background: var(--bg);
+  height:calc(100dvh - var(--appbarH) - env(safe-area-inset-bottom));
+  background:var(--bg);
   border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap);
+  padding:12px;
 }
+
+/* Rows sizing to fit exactly one viewport */
+.row{display:block; height:calc((100% - (var(--gap)*2)) / 3);}
+.row-top{display:grid; grid-template-columns:1fr 1fr; gap:var(--gap)}
+
 /* Tiles */
 .tile{
-  position:relative; border-radius:18px; overflow:visible; border:1px solid var(--line);
-  display:block; perspective:1200px;
+  position:relative; border-radius:18px; border:1px solid var(--line);
+  height:100%; width:100%;
+  background:var(--cream); color:var(--ink);
+  /* 3D */
+  perspective:1200px; -webkit-perspective:1200px;
+  will-change:transform;
+  overflow:visible;
 }
 .magenta{background:var(--mag); color:#fff}
 .cream{background:var(--cream); color:var(--ink)}
-.span-2{grid-column:1 / span 2}
 
 /* Notches */
 .notch-left::before,.notch-right::before{
   content:""; position:absolute; width:24px; height:24px; background:var(--bg);
-  border:1px solid var(--line); border-radius:50%; top:50%; transform:translateY(-50%); z-index:2
+  border:1px solid var(--line); border-radius:50%; top:50%; transform:translateY(-50%); z-index:2; pointer-events:none
 }
 .notch-left::before{ left:-13px }
 .notch-right::before{ right:-13px }
 
-/* Flip */
-.flip .flip-inner{ position:relative; height:100%; width:100%; transform-style:preserve-3d; transition:transform .6s cubic-bezier(.2,.65,.2,1)}
-.flip .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:18px; display:flex; align-items:flex-end; padding:16px }
-.flip .front{ transform:rotateY(0) }
-.flip .back{ transform:rotateY(180deg); background:inherit; color:inherit; display:flex; align-items:center; justify-content:center}
+/* Flip mechanics (stable on iOS) */
+.flip .flip-inner{
+  position:relative; height:100%; width:100%;
+  transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.2,.65,.2,1);
+}
+.flip .face{
+  position:absolute; inset:0; border-radius:18px; padding:16px;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  display:flex; align-items:flex-end; justify-content:flex-start;
+}
+.flip .back{ transform:rotateY(180deg); display:flex; align-items:center; justify-content:center}
 .flip.open .flip-inner{ transform:rotateY(180deg) }
 
-/* Content */
-.title{font-weight:900; letter-spacing:.01em; line-height:1.05; font-size: clamp(18px, 4.5vw, 26px)}
+/* Text & meta */
+.title{font-weight:900; letter-spacing:.01em; line-height:1.05; font-size: clamp(16px, 4.2vw, 22px)}
 .title.small{font-weight:700; font-size: clamp(12px, 3.6vw, 16px); line-height:1.15}
-.strong{font-weight:900}
 
 .bottom-meta{display:flex; justify-content:space-between; width:100%}
 .bottom-meta span{display:block; font-size:10px; letter-spacing:.06em; opacity:.7}
@@ -73,7 +86,6 @@ body{margin:0;background:#0f0f0f;color:#111;font-family:ui-sans-serif,system-ui,
 .qr{width:74px; height:74px; border:1.5px solid #111; border-radius:8px; background:#fff; display:grid; place-items:center; overflow:hidden}
 .number{position:absolute; right:16px; bottom:10px; font-size:11px; opacity:.7}
 
-/* Back body */
 .back-body{padding:16px; text-align:left}
 .back-body h2{margin:0 0 8px 0; font-size:18px}
 .back-body p{margin:0 0 12px 0}

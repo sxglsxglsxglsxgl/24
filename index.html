@@ -11,88 +11,93 @@
   <div class="desktop-only">
     <div class="desktop-wrap">
       <h1>CLASSNOE MESTO</h1>
-      <p>Откройте на мобильном, чтобы увидеть «карту‑билет».</p>
+      <p>Откройте на мобильном, чтобы увидеть «карту-билет».</p>
     </div>
   </div>
 
   <!-- Mobile -->
   <div class="mobile-only">
-    <header class="appbar">
+    <header class="appbar" id="appbar">
       <div class="brand">CLASSNOE MESTO</div>
     </header>
 
-    <!-- One-viewport sheet -->
     <main class="sheet" role="main" aria-label="Карта">
-      <!-- Row 1 : TWO tiles -->
-      <div class="tile magenta flip notch-left" tabindex="0" aria-label="Левая верхняя карточка">
-        <div class="flip-inner">
-          <div class="face front">
-            <div class="title strong">WINTER<br>CIRCUS</div>
-          </div>
-          <div class="face back">
-            <div class="back-body">
-              <h2>Инфо</h2>
-              <p>Любой текст на обороте.</p>
+      <!-- Row 1 : TWO tiles (explicit nested grid) -->
+      <div class="row row-top">
+        <div class="tile magenta flip notch-left" tabindex="0" aria-label="Левая верхняя карточка">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="title strong">WINTER<br>CIRCUS</div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tile cream flip notch-right" tabindex="0" aria-label="Правая верхняя карточка">
-        <div class="flip-inner">
-          <div class="face front">
-            <div class="title small">RESIDENT CITIZEN<br>MEMBER PASS</div>
-          </div>
-          <div class="face back">
-            <div class="back-body">
-              <h2>Условия</h2>
-              <ul>
-                <li>Персональная</li>
-                <li>Не передавать</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 2 : ONE tile (full width) -->
-      <div class="tile magenta flip notch-left span-2" tabindex="0" aria-label="Средняя карточка">
-        <div class="flip-inner">
-          <div class="face front">
-            <div class="title strong">WONDER&nbsp;&amp;&nbsp;CO</div>
-          </div>
-          <div class="face back">
-            <div class="back-body">
-              <h2>Детали</h2>
-              <p>Статус: <b>ACTIVE</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 3 : ONE tile (full width) -->
-      <div class="tile cream flip notch-left span-2" tabindex="0" aria-label="Нижняя карточка">
-        <div class="flip-inner">
-          <div class="face front">
-            <div class="bottom-meta">
-              <div class="meta-pair">
-                <span>MEMBER SINCE</span><strong>13.01.2024</strong>
-              </div>
-              <div class="meta-pair">
-                <span>EXPIRATION DATE</span><strong>13.01.2025</strong>
+            <div class="face back">
+              <div class="back-body">
+                <h2>Инфо</h2>
+                <p>Любой текст на обороте.</p>
               </div>
             </div>
-            <div class="codes">
-              <div class="barcode"></div>
-              <div class="qr" data-seed="verify://cm"></div>
-            </div>
-            <div class="number">NO. 20340950</div>
           </div>
-          <div class="face back">
-            <div class="back-body">
-              <h2>QR</h2>
-              <p>Нажмите «Обновить», чтобы сгенерировать новый токен.</p>
-              <button class="btn refresh">Обновить QR</button>
+        </div>
+
+        <div class="tile cream flip notch-right" tabindex="0" aria-label="Правая верхняя карточка">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="title small">RESIDENT CITIZEN<br>MEMBER PASS</div>
+            </div>
+            <div class="face back">
+              <div class="back-body">
+                <h2>Условия</h2>
+                <ul>
+                  <li>Персональная</li>
+                  <li>Не передавать</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 : ONE tile -->
+      <div class="row">
+        <div class="tile magenta flip notch-left span-2" tabindex="0" aria-label="Средняя карточка">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="title strong">WONDER&nbsp;&amp;&nbsp;CO</div>
+            </div>
+            <div class="face back">
+              <div class="back-body">
+                <h2>Детали</h2>
+                <p>Статус: <b>ACTIVE</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 : ONE tile -->
+      <div class="row">
+        <div class="tile cream flip notch-left span-2" tabindex="0" aria-label="Нижняя карточка">
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="bottom-meta">
+                <div class="meta-pair">
+                  <span>MEMBER SINCE</span><strong>13.01.2024</strong>
+                </div>
+                <div class="meta-pair">
+                  <span>EXPIRATION DATE</span><strong>13.01.2025</strong>
+                </div>
+              </div>
+              <div class="codes">
+                <div class="barcode"></div>
+                <div class="qr" data-seed="verify://cm"></div>
+              </div>
+              <div class="number">NO. 20340950</div>
+            </div>
+            <div class="face back">
+              <div class="back-body">
+                <h2>QR</h2>
+                <p>Нажмите «Обновить», чтобы сгенерировать новый токен.</p>
+                <button class="btn refresh">Обновить QR</button>
+              </div>
             </div>
           </div>
         </div>

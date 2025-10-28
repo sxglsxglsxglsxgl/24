@@ -1,22 +1,18 @@
-// Independent flip for every tile
+// Independent flip for every tile (open/close)
 document.querySelectorAll('.tile.flip').forEach(tile=>{
   const toggle = ()=> tile.classList.toggle('open');
   tile.addEventListener('click', (e)=>{
-    // Avoid toggling when clicking inside a button on back
-    if(e.target.closest('button')) return;
+    if(e.target.closest('button')) return; // don't toggle when pressing a control
     toggle();
   });
   tile.addEventListener('keydown', (e)=>{
-    if(e.key==='Enter' || e.key===' '){
-      e.preventDefault();
-      toggle();
-    }
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }
   });
 });
 
-// Simple placeholder QR (replace with real generator later)
+// Placeholder QR (replace with real generator)
 function drawFakeQR(el, seed){
-  const size = 21, cell = 3.2;
+  const size = 21, cell = 3;
   const canvas = document.createElement('canvas');
   canvas.width = size*cell; canvas.height = size*cell;
   const ctx = canvas.getContext('2d');
