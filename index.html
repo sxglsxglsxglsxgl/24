@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CLASSNOE MESTO — Pass</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Desktop layout (placeholder) -->
+  <div class="desktop-only">
+    <div class="desktop-wrap">
+      <h1>CLASSNOE MESTO</h1>
+      <p>Это десктоп-версия. Здесь может быть ваш обычный сайт.</p>
+      <p>Откройте на мобильном, чтобы увидеть «карту‑билет».</p>
+    </div>
+  </div>
+
+  <!-- Mobile layout -->
+  <div class="mobile-only">
+    <header class="appbar">
+      <div class="brand">CLASSNOE MESTO</div>
+      <button id="menu" aria-label="Меню" class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav id="drawer" class="drawer" aria-hidden="true">
+      <a href="#">Профиль</a>
+      <a href="#">Моя карта</a>
+      <a href="#">История</a>
+      <a href="#">Выход</a>
+    </nav>
+
+    <main class="stack">
+      <!-- Card 1 -->
+      <section class="ticket">
+        <div class="ticket-top">
+          <div class="pill pink">WINTER<br>CIRCUS</div>
+          <div class="pill cream small">RESIDENT CITIZEN<br>MEMBER PASS</div>
+        </div>
+        <div class="ticket-mid">
+          <div class="pill pink">WONDER<br>&amp;CO</div>
+        </div>
+        <div class="ticket-bottom">
+          <div class="meta">
+            <div><span>MEMBER SINCE</span><strong>13.01.2024</strong></div>
+            <div><span>EXPIRATION DATE</span><strong>13.01.2025</strong></div>
+          </div>
+          <div class="codes">
+            <div class="barcode" aria-label="barcode"></div>
+            <!-- Placeholder QR; replace with real generator if needed -->
+            <div class="qr" id="qr1" aria-label="qr"></div>
+          </div>
+          <div class="number">NO. 20340950</div>
+        </div>
+      </section>
+
+      <!-- Card 2 — flips on tap -->
+      <section class="ticket flip" id="flipCard" tabindex="0" aria-label="Информация по карте">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="ticket-top">
+              <div class="pill pink">CLASSNOE<br>MESTO</div>
+              <div class="pill cream small">MEMBER PASS</div>
+            </div>
+            <div class="ticket-mid">
+              <div class="pill pink">CM — ENERGY</div>
+            </div>
+            <div class="ticket-bottom">
+              <div class="meta">
+                <div><span>HOLDER</span><strong>SASHA</strong></div>
+                <div><span>TIER</span><strong>ENERGY</strong></div>
+              </div>
+              <div class="codes">
+                <div class="barcode"></div>
+                <div class="qr" id="qr2"></div>
+              </div>
+              <div class="number">CARD CM-001234</div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="details">
+              <h2>Детали карты</h2>
+              <ul>
+                <li>Статус: <b>ACTIVE</b></li>
+                <li>Скидка: <b>10%</b> на кофе</li>
+                <li>Бонусы: <b>125</b> баллов</li>
+                <li>Правила: персональная, не передавать</li>
+              </ul>
+              <button class="btn" onclick="refreshQR()">Обновить QR</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 3 -->
+      <section class="ticket">
+        <div class="cta">
+          <h3>Добавить в Wallet</h3>
+          <p>Сохраните карту в Apple Wallet / Google Wallet (мокап).</p>
+          <button class="btn outline">Добавить</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
